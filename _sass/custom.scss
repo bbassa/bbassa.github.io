@@ -1,0 +1,116 @@
+/*- Custom style -*/
+
+// -- Put custom style under this point -- //
+
+#posts {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+#posts .by-line {
+    font-weight: 500;
+    font-size: 0.8em;
+    color: #c0c0c0;
+    margin-top:1em;
+    margin-left: 0.5em;
+    margin-right: 1.5em;
+    margin-bottom: 0;
+}
+
+#post-page h1{
+	font-family: 'Noto Sans KR', sans-serif;
+    color: #008A3C;
+    font-weight: 700;
+    padding-bottom:0.18em;
+}
+#post-page h2{
+	font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+#post-page h3{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+#post-page p{
+	margin:1em;
+}
+#post-page time.by-line{
+    font-weight: 500;
+    font-size: 0.8em;
+	color: #c0c0c0;
+	margin-left:0.5em;
+	margin-right:1.5em;
+	margin-bottom:0;
+}
+#post-page blockquote, #post-page .highlighter-rouge{
+	font-family: consolas;
+	font-size: 0.8em;
+	font-style: normal;
+	margin:1em;
+}
+#post-page .highlighter-rouge{
+	border-left: 7px solid #558abb !important;
+    background:url(../img/template/blueprint-dark.png) top center #fafbfc;
+	overflow-x: auto;
+}
+
+#post-page blockquote {
+	border-left: 7px solid #008A3C !important;
+	background-color: rgba(0, 138, 60, 0.05) !important;
+	border-radius: 0;
+}
+#post-page pre.highlight {
+	display: inline-block;
+}
+#post-page pre.highlight code{
+	background-color:transparent;
+	font-family: consolas;
+	display: inline-block;
+	padding:1em 2em;
+}
+
+.post-tag {
+	text-decoration: none;
+    display: inline-block;
+    background: rgba(0, 138, 60, 0.15);
+    padding: 0 .5rem;
+    margin-right: .5rem;
+    border-radius: 4px;
+    color: #008A3C;
+    font-size: 0.8em;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+.post-tag:before {
+    content: "\f02b";
+    font-family: FontAwesome;
+    padding-right: .5em;
+}
+.post-tag:hover {
+    background: #008A3C;
+    color: #fff;
+}
+
+
+.category-tag {
+	text-decoration: none;
+    display: inline-block;
+    background: rgba(106,159,181,0.15);;
+    padding: 0 .5rem;
+    margin-right: .5rem;
+    border-radius: 4px;
+    color: #6a9fb5;
+    font-size: 0.8em;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+.category-tag:before {
+    content: "\f0ae";
+    font-family: FontAwesome;
+    padding-right: .5em;
+}
+.category-tag:hover {
+    background: #6a9fb5;
+    color: #fff;
+}
+
+

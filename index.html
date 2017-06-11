@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<!-- Posts -->
+<ul id="posts">
+
+	{% for post in paginator.posts %}
+
+	  <li class="post">
+	  	<h2><a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{{ post.title }}</a></h2>
+	  	<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">{{ post.date | date_to_string }}</time>
+{% assign post = page %}
+{% if post.category %}
+			<a href="/category/#category" class="category-tag">{{post.category}}</a>
+{% endif %}
+{% if post.tags.size > 0 %}
+    {% capture tags_content %}Posted with {% if post.tags.size == 1 %}<i class="fa fa-tag"></i>{% else %}<i class="fa fa-tags"></i>{% endif %}: {% endcapture %}
+    {% for post_tag in post.tags %}
+        	<a href="/tags/#tag" class="post-tag">{{post_tag}}</a>
+    {% endfor %}
+{% endif %}	
+
+
+
+	  </li>
+
+    {% endfor %}
+
+</ul>

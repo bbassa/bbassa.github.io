@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<article id="post-page">
+	<h1>{{ page.title }}</h1>
+	<time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+{% assign post = page %}
+{% if post.category %}
+			<a href="/category/#category" class="category-tag">{{post.category}}</a>
+{% endif %}
+{% if post.tags.size > 0 %}
+    {% capture tags_content %}Posted with {% if post.tags.size == 1 %}<i class="fa fa-tag"></i>{% else %}<i class="fa fa-tags"></i>{% endif %}: {% endcapture %}
+    {% for post_tag in post.tags %}
+        	<a href="/tags/#tag" class="post-tag">{{post_tag}}</a>
+    {% endfor %}
+{% endif %}
+
+	<div class="content">
+
+		{{ content }}
+		
+	</div>
+</article>
+
