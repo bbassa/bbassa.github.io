@@ -1,3 +1,9 @@
+---
+title: GIT COMMAND LINE
+layout: post
+category: blog
+tags: [blog, jekyll, start]
+---
 # __GIT Command Line 명령어 정리__
 #### __1. 환경설정__
 > - git config --global user.name "사용자명"<br/>
