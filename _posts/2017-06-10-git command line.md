@@ -2,7 +2,6 @@
 title: GIT COMMAND LINE
 layout: post
 category: blog
-tags: [blog, jekyll, start]
 ---
 # __GIT Command Line 명령어 정리__
 #### __1. 환경설정__
@@ -25,7 +24,7 @@ tags: [blog, jekyll, start]
 > - git commit -m "커밋 메시지"<br/>
 > -Staging Area에 있는 파일을 로컬저장소의 HEAD에 반영합니다.
 > (아직 원격저장소에는 반영이 안된 상태)
->  ![Alt text](/uploads/git/gitFile.png)
+>  ![Alt text](/uploads/gitFile.png)
 >
 > - git push<br />
 > -로컬저장소의 HEAD안에 있는 파일을 원격저장소에 반영합니다.
@@ -43,23 +42,23 @@ tags: [blog, jekyll, start]
 > 
 > - git remote -v <br />
 > -원격저장소 이름과 주소를 함께 확인합니다.<br />
-> ![Alt text](/uploads/git/remote2.png) 
+> ![Alt text](/uploads/remote2.png) 
 > 
 > - git remote rm 저장소이름<br />
 > -원격저장소를 삭제합니다.<br />
-> ![Alt text](/uploads/git/remote3.png)
+> ![Alt text](/uploads/remote3.png)
 
 #### __4. Branch & Merge__
 > - git branch <br/>
 > -브랜치의 종류와 현재 작업중인 브랜치를 확인 할수 있습니다.<br/>
->  ![Alt text](/uploads/git/branchFile.png)
+>  ![Alt text](/uploads/branchFile.png)
 >  
 > - git branch 브랜치명<br/>
 > -새로운 브랜치를 생성합니다.<br/>
-> ![Alt text](/uploads/git/branchFile2.png) 
+> ![Alt text](/uploads/branchFile2.png) 
 > 
 > - git branch -d 브랜치명<br/>
-> ![Alt text](/uploads/git/branchFile3.png) 
+> ![Alt text](/uploads/branchFile3.png) 
 > 
 > - git merge 브랜치명<br/>
 > -현재 작업중인 브랜치에 다른 브랜치에서 작업한 내용을 추가합니다. 
