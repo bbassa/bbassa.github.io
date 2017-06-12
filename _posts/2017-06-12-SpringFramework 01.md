@@ -22,3 +22,27 @@ category: blog
 > BeanFactory : 스프링 설정 파일(applicationContext.xml)에 등록된 빈(bean) 객체를 생성하고 관리하는 가장 기본적인 컨테이너 기능 만 제공
 >  ApplicationContext : 트랜잭션 관리나 메시지 기반의 다국어 처리 등 다양한 기능을 지원
 >  ![Alt text](/uploads/appContext.png)
+
+## **Chapter 03** 
+#### 01. Spring Bean Life Cycle 관리방법
+> **InitializingBean** : Interface를 구현하면 Spring Bean생성과 properties의존성 주입 후 콜백 afterPoropertiesSet()을 호출
+> **DispoableBean** : Interface를 구현하면 Spring Bean소멸 전 콜백 destroy()를 호출
+
+* 인터페이스 구현
+<pre><code>
+public class SimpleClass implements InitializingBean, DisposableBean{
+
+	public void afterPoropertiesSet() throws Exception{
+		BEAN 생성 시 호출
+	}
+
+	public void destroy() throws Exception{
+		BEAN 소멸 시 호출
+	}
+}
+</code></pre>
+* Bean 정의시 메소드 지정
+<pre><code>
+<bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>
+</code></pre>
+
