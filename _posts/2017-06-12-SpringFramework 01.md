@@ -48,6 +48,7 @@ public class SimpleClass implements InitializingBean, DisposableBean{
 ```xml
 <bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>
 ```
+
 * 어노테이션 지정
 
 ```java
@@ -67,6 +68,7 @@ public class BsimpleClass{
 
 #### 02. Spring Bean 범위(scope)
 * 빈 태그의 스코프 속성 값
+
 범위 | 설명
 ---- | ----
 singleton|스프링 컨테이너에 한개의 bean객체만 존재한다.
