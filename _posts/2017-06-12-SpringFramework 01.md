@@ -20,8 +20,9 @@ category: blog
 > ![Alt text](/uploads/beanFac.png)
 
 > BeanFactory : 스프링 설정 파일(applicationContext.xml)에 등록된 빈(bean) 객체를 생성하고 관리하는 가장 기본적인 컨테이너 기능 만 제공
->  ApplicationContext : 트랜잭션 관리나 메시지 기반의 다국어 처리 등 다양한 기능을 지원
->  ![Alt text](/uploads/appContext.png)
+
+> ApplicationContext : 트랜잭션 관리나 메시지 기반의 다국어 처리 등 다양한 기능을 지원
+> ![Alt text](/uploads/appContext.png)
 
 ## **Chapter 03** 
 #### 01. Spring Bean Life Cycle 관리방법
