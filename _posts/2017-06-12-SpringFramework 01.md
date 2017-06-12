@@ -43,6 +43,5 @@ public class SimpleClass implements InitializingBean, DisposableBean{
 ```
 * Bean 정의시 메소드 지정
 ```xml
-<bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>
-```
+<bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>```
 
