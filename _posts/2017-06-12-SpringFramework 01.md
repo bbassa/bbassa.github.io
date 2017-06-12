@@ -29,7 +29,7 @@ category: blog
 > **DispoableBean** : Interface를 구현하면 Spring Bean소멸 전 콜백 destroy()를 호출
 
 * 인터페이스 구현
-```
+```java
 public class SimpleClass implements InitializingBean, DisposableBean{
 
 	public void afterPoropertiesSet() throws Exception{
@@ -42,7 +42,7 @@ public class SimpleClass implements InitializingBean, DisposableBean{
 }
 ```
 * Bean 정의시 메소드 지정
-```
+```xml
 <bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>
 ```
 
