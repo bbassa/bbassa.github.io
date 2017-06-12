@@ -43,5 +43,47 @@ public class SimpleClass implements InitializingBean, DisposableBean{
 ```
 * Bean 정의시 메소드 지정
 ```xml
-<bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>```
+<bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>
+```
+* 어노테이션 지정
+```java
+public class BsimpleClass{
+	
+	@PostContruct
+	public void init(){
+		BEAN 생성 시 호출
+	}
+	
+	@PreDestory
+	public void destroy(){
+		BEAN 소멸 시 호출
+	}	
+}
+```
+
+#### 02. Spring Bean 범위(scope)
+* 빈 태그의 스코프 속성 값
+범위 | 설명
+---- | ----
+singleton|스프링 컨테이너에 한개의 bean객체만 존재한다.
+prototype|bean을 사용할 때 마다 객체를 생성한다.
+request|http요청마다 객체를 생성한다(WebApplicationContext에서만 적용가능)
+session|http세션마다 객체를 생성한다(WebApplicationContext에서만 적용가능)
+global-session|글로벌 http세션에 대해 객체를 생성한다.(포틀릿을 지원하는 Context에서만 적용가능)
+
+
+* 사용방법
+```java
+import org.springframework.context.annotation.Scope;
+
+@Bean
+@Scope("singleton")
+public CoonPool1 pool1(){
+	return new ConnPool1();
+}
+```
+```xml
+<bean id="pool1" class="net.madvirus.chap03.ConnPool1" Scope="singleton"/>
+```
+
 
