@@ -29,6 +29,7 @@ category: blog
 > **DispoableBean** : Interface를 구현하면 Spring Bean소멸 전 콜백 destroy()를 호출
 
 * 인터페이스 구현
+
 ```java
 public class SimpleClass implements InitializingBean, DisposableBean{
 
@@ -41,11 +42,14 @@ public class SimpleClass implements InitializingBean, DisposableBean{
 	}
 }
 ```
+
 * Bean 정의시 메소드 지정
+
 ```xml
 <bean id="BBean" class = "com.spring.bean.BSimpleClass" init-method="init" destroy-method="destory"/>
 ```
 * 어노테이션 지정
+
 ```java
 public class BsimpleClass{
 	
@@ -73,6 +77,7 @@ global-session|글로벌 http세션에 대해 객체를 생성한다.(포틀릿�
 
 
 * 사용방법
+
 ```java
 import org.springframework.context.annotation.Scope;
 
@@ -82,6 +87,7 @@ public CoonPool1 pool1(){
 	return new ConnPool1();
 }
 ```
+
 ```xml
 <bean id="pool1" class="net.madvirus.chap03.ConnPool1" Scope="singleton"/>
 ```
