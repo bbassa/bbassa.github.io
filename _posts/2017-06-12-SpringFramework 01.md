@@ -69,13 +69,11 @@ public class BsimpleClass{
 #### 02. Spring Bean 범위(scope)
 * 빈 태그의 스코프 속성 값
 
-범위 | 설명
----- | ----
-singleton|스프링 컨테이너에 한개의 bean객체만 존재한다.
-prototype|bean을 사용할 때 마다 객체를 생성한다.
-request|http요청마다 객체를 생성한다(WebApplicationContext에서만 적용가능)
-session|http세션마다 객체를 생성한다(WebApplicationContext에서만 적용가능)
-global-session|글로벌 http세션에 대해 객체를 생성한다.(포틀릿을 지원하는 Context에서만 적용가능)
+>singleton : 스프링 컨테이너에 한개의 bean객체만 존재한다.
+>prototype : bean을 사용할 때 마다 객체를 생성한다.
+>requesthttp : 요청마다 객체를 생성한다(WebApplicationContext에서만 적용가능)
+>sessionhttp : 세션마다 객체를 생성한다(WebApplicationContext에서만 적용가능)
+>global-session : 글로벌 http세션에 대해 객체를 생성한다.(포틀릿을 지원하는 Context에서만 적용가능)
 
 
 * 사용방법
