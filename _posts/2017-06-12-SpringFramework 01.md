@@ -8,8 +8,7 @@ category: blog
 
 ## **Chapter 02** 
 #### 01. DI(Dependency Injection, 의존성 주입)
-> 스프링에서의 DI의 의미
-> - 부품들을 생성하고, 제품을 조립해주는 공정과정을 대신해 주는 라이브러리	
+> 스프링에서의 DI의 의미 : 부품들을 생성하고, 제품을 조립해주는 공정과정을 대신해 주는 라이브러리	
 >제품 | 스프링
 >----|----
 >주문서|설정파일(XML)
@@ -19,7 +18,6 @@ category: blog
 * XML을 이용한 DI 설정
 
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 	
 	<!-- <bean>태그 : 생성할 객체 지정-->
@@ -70,6 +68,7 @@ public class Config{
 > ![Alt text](/uploads/beanFac.png)
 
 > BeanFactory : 스프링 설정 파일(applicationContext.xml)에 등록된 빈(bean) 객체를 생성하고 관리하는 가장 기본적인 컨테이너 기능 만 제공
+> 
 >  ApplicationContext : 트랜잭션 관리나 메시지 기반의 다국어 처리 등 다양한 기능을 지원
 >  ![Alt text](/uploads/appContext.png)
 
@@ -143,6 +142,7 @@ public CoonPool1 pool1(){
 ```xml
 <bean id="pool1" class="net.madvirus.chap03.ConnPool1" Scope="singleton"/>
 ```
+
 
 
 
