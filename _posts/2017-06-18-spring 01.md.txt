@@ -1,0 +1,239 @@
+---
+title: Spring 01
+layout: post
+category: blog
+---
+
+### **01. 스프링 주요 모듈**
+
+| 모듈명| 설명 |OSGI 모듈이름 | MAVEN 모듈이름 |
+| :---: | :--- | :--- | :--- |
+| core | DI기능을 비롯한 프레임워크 기반을 제공한다. | org.springframework.core | spring-core |
+| beans | BeanFactory 인터페이스를 통해 구현된다. | springorg.springframework.bean | spring-beans |
+| expression | 객체에 접근하고 객체를 조작하기 위한 표현 언어를 제공한다.| org.springframework.epression| spring-expression |
+| context | spring-core와 spring-beans 모듈을 확장해서 국제화, 이벤트 처리, 리소스 로딩, 서블릿 컨테이너를 위한 컨텍스트 생성 등의 기능을 추가로 제공한다. Application Context 인터페이스를 통해 구현된다.| org.springframework.context |  spring-context |
+| aop | AOP Alliance에 호환되는 AOP구현을 제공한다. | org.springframework.aop | org.springframework.aop | spring-aop |
+| aspects | AspectJ와의 통합을 제공한다.| org.springframework.aspects | spring-aspects |
+| web | 파일 업로드, Locale 처리 등 웹을 위한 통합 기능을 제공한다. 또한 원격 지원 기능중 웹 관련 기능을 제공한다. | org.springframework.web | spring-web |
+| transaction| AOP를 이용한 선언적 트랜잭션 관리 및 코드를 이용한 트랜잭션 관리 기능을 제공한다. | org.springframework.transaction | spring-transaction |
+| jdbc | JDBC 프로그래밍을 위한 추상 레이어를 제공한다. JDBC 템플릿을 제공함으로써 간결한 코드로 JDBC 프로그래밍을 할 수 있게 돕는다. | org.springframework.jdbc | spring-jdbc |
+| orm| 하이버네이트, JPA, iBatis, JDO 등 ORM API를 위한 통합 레이어를 제공한다. 스프링이 제공하는 트랜잭션 관리와의 연동을 지원한다.  | org.springframework.orm | spring-orm |
+| oxm| 객체와 XML 사이의 매핑을 처리하기 위한 추상 레이어를 제공한다. JAXB, Castor, XMLBeans, JiBX, XStream과의 연동을 지원한다. | org.springframework.oxm | spring-oxm |
+| jms | JMS의 메시지를 생성하고 수신하는 기능을 제공한다. | org.springframework.jms| spring-jms |
+| test| JUnit이나 TestNG를 이용한 스프링 컴포넌트의 테스트를 지원한다. | org.springframework.test| spring-test |
+| instrument| Instrumentation 지원 클래스를 제공한다.| org.springframework.instrument| spring-instrument |
+| asm| ASM 라이브러리를 재패키징 한 모듈  | org.springframework.asm| spring-asm |
+
+![Alt text] (/uploads/SpingModule.png)
+
+***
+
+### **02. IoC(Inversion of Control)제어의 역전**
+일반적으로 main()같은 프로그램이 시작되는 지점에서 다음에 사용할 오브젝트를 결정, 생성하고 만들어진 오브젝트내의 메소드를 호출하는 작업을 반복한다. 이런 구조에서 **모든 종류의 작업을 사용하는 쪽에서 제어하는 구조이다.**
+
+이에 반하여 IoC는 제어흐름의 개념을 거꾸로 뒤집는다.  오브젝트는 자신이 사용할 오브젝틑 스스로 생성하거나 선택하지 않는다. 그리고 자신이 어떻게 만들어지고 어디서 사용되는지 알 수 없다. 모든 제어 권한을 자신이 아닌 다른 대상에게 위임하는 것이다. 프로그램의 시작을 담당하는 main()같은 엔트리 포인트를 제외하면 오브젝트는 이런 방식으로 위임받은 제어 권한을 갖는 특별한 오브젝트에 의해 결정되고 만들어지는 것이다.
+>  -작업을 수행하는 쪽에서 Object를 생성하는 제어 흐름의 개념을 거꾸로 뒤집는다.
+>  -IoC에서는 Object가 자신이 사용할 Object를 생성하거나 선택하지 않는다.
+>- Object는 자신이 어떻게 생성되고 어떻게 사용되는지 알 수 없다.
+> -모든 Object는 제어 권한을 위임받는 특별한 Object에 의해서 만들어지고 사용된다,
+
+![Alt text] (/uploads/ioc.png)
+
+> **EJB(Enterprise Java Bean)** :효율적으로 서버 관리를 해주고, 또 프로그램 관련 문제들을 알아서 처리해준다는 개념.(연결 관계가 복잡하고, 무겁고, 독립적이지 못하다)
+> 
+> **DL(Dependecy Lookup)** : JNDI 같은 저장소에 의하여 관리되고 있는 bean을 개발자들이 직접 컨테이너(Container)에서 제공하는 API를 이용하여 lookup하는 것을 말함. 따라서 container와의 종속성이 생김. (JNDI 컨테이너에 의존성이 강하다. )
+> 
+ 오브젝트간에 디커플링(decoupling)을 해주는 면에서 장점이 있지만 이렇게 만들어진 오브젝트는 컨테이너 밖에서 실행 할 수 없고 JNDI외의 방법을 사용할 경우 JNDI관련 코드를 오브젝트내에 일일히 변경해 줘야 하며 테스트하기 매우 어렵고 코드 양이 매우 증가하고 매번 Casting해야 하고 NamingException같은 checked exception을 처리하기 위해서 exception처리구조가 매우 복잡해지는 단점이 있음(EJB container, Spring container 에서 지원)
+>
+>**DI (Dependecy Injection)** : 각 class 사이의 의존관계를 빈 설정 정보를 바탕으로 container가 자동적으로 연결해 주는 것을 말함. 따라서 lookup과 관련된 코드들이 오브젝트 내에서 완전히 사라지고 컨테이너에 의존적이지 않은 코드를 작성할 수 있음.
+ 단지 빈 설정 파일에서 의존관계가 필요하다는 정보를 추가하면 됨.
+
+***
+
+### **03. DI(Dependecy Injection) 의존성 주입**
+
+* Setter Injection(XML기반)
+
+```java
+import onj.spring.di;
+
+public class Audi{
+
+	private Car car;
+
+	public void setCar(Car car) {
+	 this.car = car;
+	}
+}
+```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<bean id="car" class="onj.spring.di.Car"/>
+
+<bean id="audi" class="onj.spring.di.Audi">
+ <property name="car">
+	 <ref bean="car"/>
+ </property>
+</bean>
+```
+
+* Setter Injection(Annotation 기반)
+```java
+private Car car;
+
+public void setCar(Car car) {
+ this.car = car;
+}
+```
+
+```java
+@Service("car")
+public class Car {
+	private String name; 
+
+	public Car() {
+	} 
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<description>Example configuration to get you started.
+</description>
+<context:annotation-config/>
+<context:component-scan base-package="onj.spring.di" />
+```
+
+ * Constructor Injection(XML 기반)
+```java
+public class Audi implements CarMaker {
+
+	private Car car;
+	
+	public Audi(Car car) {  //생성자에 주입
+	 this.car = car;
+	}
+
+	public Car sell() {
+	 this.car.setName("Audi A6");
+	 return car;
+	}
+}
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<bean id="car" class="onj.spring.di2.Car"/>
+
+<bean id="audi" class="onj.spring.di2.Audi">
+	<constructor-arg name="car">
+		<ref bean="car"/>
+	</constructor-arg>
+</bean>
+```
+
+---
+
+### **04. ApplicationContext**
+
+-----
+### **05. 빈라이프사이클**
+스프링 컨테이너는 빈 객체를 생성하고, 프로퍼티를 할당하고, 초기화를 수행하고, 사용이 끝나면 소멸시키는 일련의 과정을 관리한다. 예를 들어, 데이터베이스에 대한 커넥션풀을 제공하는 빈은 사용되기 전에 일정 개수의 커넥션을 연결해야 하고, 애플리케이션 종료 시점에는 열려 있는 커넥션을 모두 닫아야 하는데, 스프링 컨테이너는 이런 커넥션 생성과 종료 시점을 제어하게 된다.
+
+* 빈라이프사이클 개요
+![Alt text] (/uploads/beanLifeCycle.png)
+
+* InitializingBean 인터페이스와 DisposableBean 인터페이스
+
+ ###### 스프링은 객체의 초기화 및 소멸 과정을 위해 다음의 두 인터페이스를 제공하고 있다.
+```java
+// In itializingBean 인터페이스
+public interface InitializingBean{
+    void afterPropertiesSet() throws Exception;
+}
+
+// DisposableBean 인터페이스
+public interface DisposableBean{
+    void destroy() throws Exception; 
+}
+
+// Sample
+public class ConnPool implements InitializingBean, DisposableBean{
+...
+@Override
+public void afterPropertiesSet() throws Exception{
+    //커넥션 풀 초기화 실행: DB 커넥션을 여는 코드 
+    }
+
+@Override
+public void destory() throws Excption{
+    //커넥션 풀 종료 실행: 연 DB 커넥션을 닫은 코드 
+    }
+}
+```
+
+* 커스텀 init 메서드와 커스텀 destroy 메서드
+
+``` xml
+<bean id="pool3" class="net.madvirus.spring4.chap03.ConnPool3"
+    init-method="init" destroy-method="destroy"/>
+``` 
+
+
+* @PostConstruct와 @PreDestroy
+
+```java
+public class BsimpleClass{
+	
+	@PostContruct
+	public void init(){
+		//커넥션 풀 초기화 실행: DB 커넥션을 여는 코드 
+	}
+	
+	@PreDestory
+	public void destroy(){
+		//커넥션 풀 종료 실행: 연 DB 커넥션을 닫은 코드
+	}	
+}
+```
+---
+### **06. 빈 범위(SCOPE)**
+
+| scope | 설명 |
+| :---: | :--- |
+|singleton | 스프링 컨테이너에 한개의 bean객체만 존재한다. |
+|prototype | bean을 사용할 때 마다 객체를 생성한다.|
+| requesthttp | 요청마다 객체를 생성한다(WebApplicationContext에서만 적용가능)| 
+|sessionhttp | 세션마다 객체를 생성한다(WebApplicationContext에서만 적용가능)|
+| global-session | 글로벌 http세션에 대해 객체를 생성한다.(포틀릿을 지원하는 Context에서만 적용가능)|
+
+```java
+import org.springframework.context.annotation.Scope;
+
+@Bean
+@Scope("singleton")
+public CoonPool1 pool1(){
+	return new ConnPool1();
+}
+```
+
+```xml
+<bean id="pool1" class="net.madvirus.chap03.ConnPool1" scope="singleton"/>
+```
+---
+
+### **07. Environment**
+
+---
+
+### **08. 프로퍼티**
+
+---
+
+### **09.프로필**
+
+---
+
+### **10. 메시지**
+
+---
